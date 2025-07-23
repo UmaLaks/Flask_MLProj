@@ -5,7 +5,7 @@ import numpy as np
 app=Flask(__name__)
 
 logging.basicConfig(level=logging.DEBUG,format='%(asctime)s [%(levelname)s] %(message)s')
-
+model = pickle.load(open(r"C:\Users\dumalaks\PycharmProjects\PyColorMap\FlaskProject\grid.pkl", "rb"))
 @app.route('/predict',methods=["post"])
 def predict():
     logging.info("Flask app is running")
@@ -14,7 +14,7 @@ def predict():
     data_list=data['features']
     data_np=np.array(data_list).reshape(1,-1)
     logging.info("fetching the data to train the model")
-    model=pickle.load(open("grid.pkl", "rb"))
+
     logging.info("Loading the model")
     y_pred=model.predict(data_np)
     print(y_pred.tolist())
