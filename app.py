@@ -5,7 +5,7 @@ import numpy as np
 app=Flask(__name__)
 
 logging.basicConfig(level=logging.DEBUG,format='%(asctime)s [%(levelname)s] %(message)s')
-model = pickle.load(open(r"C:\Users\dumalaks\PycharmProjects\PyColorMap\FlaskProject\grid.pkl", "rb"))
+model = pickle.load(open(r"grid.pkl", "rb"))
 @app.route('/predict',methods=["post"])
 def predict():
     logging.info("Flask app is running")
